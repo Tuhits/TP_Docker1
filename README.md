@@ -41,3 +41,17 @@ Inconvénients :
 - Manque de persistance : Les données sont incluses dans l'image et sont donc éphémères. Toute modification ou suppression des données nécessite la reconstruction de l'image.
 - Taille de l'image : L'inclusion de grandes quantités de données peut augmenter considérablement la taille de l'image Docker, ce qui peut entraîner des temps de déploiement plus longs et une utilisation plus importante du stockage.
 - Difficulté de mise à jour : Tout changement dans les données nécessite la reconstruction complète de l'image, ce qui peut être fastidieux et prendre du temps.
+
+Dockerfile : 
+- FROM httpd:latest COPY ./html/index.html /usr/local/apache2/htdocs/ EXPOSE 80
+
+- docker run --name contener_phpmyadmin --link contener_mysql -p 8080:80 -d -e PMA_HOST=contener_mysql phpmyadmin/phpmyadmin
+
+Docker est utilisé pour gérer des conteneurs individuels, tandis que Docker Compose est utilisé pour gérer des applications composées de plusieurs conteneurs interconnectés. Ils sont souvent utilisés ensemble pour simplifier le processus de développement, de déploiement et de gestion des applications conteneurisées.
+La commande qui permet de lancer tous les conteneurs du fichier yaml est docker-compose up La commande qui permet de stopper tous les conteneurs du fichier yaml est docker-compose stop
+
+fichier docker_compose :
+
+version: '3.8'
+services: db: image: mysql:latest restart: always environment: MYSQL_ROOT_PASSWORD: root MYSQL_DATABASE: mysql MYSQL_USER: root MYSQL_PASSWORD: root ports: - "3306:3306"
+phpmyadmin: image: phpmyadmin/phpmyadmin:latest restart: always environment: PMA_HOST: db PMA_PORT: 3306 ports: - "8080:80" depends_on: - db
