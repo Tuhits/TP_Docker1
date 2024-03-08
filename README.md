@@ -18,7 +18,7 @@ Installer "Docker Desktop"
 
   - Flexibilité : Vous pouvez monter des volumes depuis n'importe quel emplacement sur le système hôte, y compris des volumes partagés réseau.
 
-  Performances : Le montage d'un volume est généralement plus rapide que la copie de gros volumes de données.
+  - Performances : Le montage d'un volume est généralement plus rapide que la copie de gros volumes de données.
 
   - Facilité de mise à jour : Les modifications apportées aux fichiers sur le système hôte sont immédiatement visibles dans le conteneur sans nécessiter de nouvelles opérations de construction d'image.
 
