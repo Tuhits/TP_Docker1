@@ -53,5 +53,15 @@ La commande qui permet de lancer tous les conteneurs du fichier yaml est docker-
 fichier docker_compose :
 
 version: '3.8'
-services: db: image: mysql:latest restart: always environment: MYSQL_ROOT_PASSWORD: root MYSQL_DATABASE: mysql MYSQL_USER: root MYSQL_PASSWORD: root ports: - "3306:3306"
-phpmyadmin: image: phpmyadmin/phpmyadmin:latest restart: always environment: PMA_HOST: db PMA_PORT: 3306 ports: - "8080:80" depends_on: - db
+services: 
+db: image: mysql:latest 
+restart: always 
+environment: MYSQL_ROOT_PASSWORD: root MYSQL_DATABASE: mysql MYSQL_USER: root MYSQL_PASSWORD: root 
+ports: - "3306:3306"
+
+phpmyadmin: 
+image: phpmyadmin/phpmyadmin:latest 
+restart: always 
+environment: PMA_HOST: db PMA_PORT: 3306 
+ports: - "8080:80" 
+depends_on: - db
